@@ -1,6 +1,5 @@
 # 📚 Recursos para el proyecto realizado
 
----
 
 ## 🔷 Modelo Conceptual y Relacional
 - [Modelo Conceptual y Relacional – Formación CIP](https://aula.formacioncip.com/mod/page/view.php?id=257593)
