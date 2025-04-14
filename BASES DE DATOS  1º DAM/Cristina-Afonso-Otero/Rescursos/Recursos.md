@@ -15,3 +15,6 @@
 
 ## 📌 Delimitadores en MySQL
 - [¿Qué es un Delimiter en MySQL? – Naukri Code360](https://www.naukri.com/code360/library/what-is-a-delimiter-in-mysql)
+
+## 🔑 Llave Primaria Compuesta
+- [Clave primaria compuesta](https://www.tutorialesprogramacionya.com/mysqlya/temarios/descripcion.php?cod=38#google_vignette)
