@@ -49,3 +49,34 @@ BEGIN
   END IF;
 END$$
 DELIMITER ;
+
+-- Vista de Empleados y Jefes de Departamento
+CREATE VIEW vista_empleados_jefes_departamento AS
+SELECT empleados.idEmpleado, empleados.Nombre, empleados.Apellidos, empleados.SueldoActual, 
+       departamentos.Nombre AS Departamento,
+       jefe.Nombre AS JefeDepartamento
+FROM empleados
+JOIN departamentos ON empleados.Departamentos_idDepartamento = departamentos.idDepartamento
+LEFT JOIN empleados AS jefe ON empleados.idEmpleadoJefe = jefe.idEmpleado;
+
+-- Vista de Empleados con Antigüedad Mayor a 5 Años
+CREATE VIEW vista_empleados_antiguedad AS
+SELECT empleados.idEmpleado, empleados.Nombre, empleados.Apellidos, empleados.FechaNacimiento, 
+       empleados.SueldoActual, empleados.FechaContratacion
+FROM empleados
+WHERE DATEDIFF(CURDATE(), empleados.FechaContratacion) > 1825; -- 1825 días = 5 años
+
+-- Vista de Asistencia Diaria por Empleado
+CREATE VIEW vista_asistencia_diaria AS
+SELECT empleados.idEmpleado, empleados.Nombre, empleados.Apellidos, asistencias.Fecha, 
+       asistencias.HoraEntrada, asistencias.HoraSalida
+FROM asistencias
+JOIN empleados ON asistencias.idEmpleado = empleados.idEmpleado
+ORDER BY asistencias.Fecha DESC;
+
+-- Vista de Promedio de Salario por Departamento
+CREATE VIEW vista_promedio_sueldo_departamento AS
+SELECT departamentos.Nombre AS Departamento, AVG(empleados.SueldoActual) AS PromedioSueldo
+FROM empleados
+JOIN departamentos ON empleados.Departamentos_idDepartamento = departamentos.idDepartamento
+GROUP BY departamentos.Nombre;
